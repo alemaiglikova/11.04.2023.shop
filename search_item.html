@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Search Item</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  </head>
+  <body>
+    <h1>Search Item</h1>
+    <form action="{{ url_for('search_item') }}" method="post">
+      <label for="search_query">Search Query:</label>
+      <input type="text" id="search_query" name="search_query" required>
+      <button type="submit">Search</button>
+    </form>
+    <a href="{{ url_for('index') }}">Inventory List</a>
+    <a href="{{ url_for('add_item') }}">Add Item</a>
+  </body>
+</html>

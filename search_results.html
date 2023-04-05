@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Results</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<h1>Search Results</h1>
+	<form action="{{ url_for('search_item') }}" method="POST">
+		<label for="search_query">Search:</label>
+		<input type="text" id="search_query" name="search_query" required>
+		<button type="submit">Search</button>
+	</form>
+	{% if items %}
+		<table>
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Title</th>
+					<th>Description</th>
+					<th>Price</th>
+					<th>Count</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for item in items %}
+				<tr>
+					<td>{{ item['id'] }}</td>
+					<td>{{ item['title'] }}</td>
+					<td>{{ item['description'] }}</td>
+					<td>{{ item['price'] }}</td>
+					<td>{{ item['count'] }}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	{% else %}
+		<p>No results found.</p>
+	{% endif %}
+
+</body>
+</html>
